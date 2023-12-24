@@ -101,6 +101,18 @@ export interface LinksSocialNetwork extends Schema.Component {
   };
 }
 
+export interface SidebarSidebar extends Schema.Component {
+  collectionName: 'components_sidebar_sidebars';
+  info: {
+    displayName: 'Sidebar';
+  };
+  attributes: {
+    barands: Attribute.Component<'filters.brand'>;
+    amounts: Attribute.Component<'filters.amounts'>;
+    sizes: Attribute.Component<'filters.sizes'>;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
@@ -112,6 +124,7 @@ declare module '@strapi/types' {
       'labels.label-text': LabelsLabelText;
       'links.nav-link': LinksNavLink;
       'links.social-network': LinksSocialNetwork;
+      'sidebar.sidebar': SidebarSidebar;
     }
   }
 }

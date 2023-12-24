@@ -1,0 +1,24 @@
+{
+  "collectionName": "components_sidebar_sidebars",
+  "info": {
+    "displayName": "Sidebar"
+  },
+  "options": {},
+  "attributes": {
+    "barands": {
+      "type": "component",
+      "repeatable": false,
+      "component": "filters.brand"
+    },
+    "amounts": {
+      "type": "component",
+      "repeatable": false,
+      "component": "filters.amounts"
+    },
+    "sizes": {
+      "type": "component",
+      "repeatable": false,
+      "component": "filters.sizes"
+    }
+  }
+}

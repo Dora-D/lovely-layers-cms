@@ -776,12 +776,12 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
   };
 }
 
-export interface ApiCategorySidebarCategorySidebar extends Schema.SingleType {
-  collectionName: 'category_sidebars';
+export interface ApiCategoryPageCategoryPage extends Schema.SingleType {
+  collectionName: 'category_pages';
   info: {
-    singularName: 'category-sidebar';
-    pluralName: 'category-sidebars';
-    displayName: 'Category Sidebar';
+    singularName: 'category-page';
+    pluralName: 'category-pages';
+    displayName: 'Category Page';
   };
   options: {
     draftAndPublish: true;
@@ -792,43 +792,42 @@ export interface ApiCategorySidebarCategorySidebar extends Schema.SingleType {
     };
   };
   attributes: {
-    amounts: Attribute.Component<'filters.amounts'> &
+    sidebar: Attribute.Component<'sidebar.sidebar'> &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
-    brand_filter: Attribute.Component<'filters.brand'> &
+    title: Attribute.String &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
-    sizes: Attribute.Component<'filters.sizes'> &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
+    products: Attribute.Relation<
+      'api::category-page.category-page',
+      'oneToMany',
+      'api::product.product'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
-      'api::category-sidebar.category-sidebar',
+      'api::category-page.category-page',
       'oneToOne',
       'admin::user'
     > &
       Attribute.Private;
     updatedBy: Attribute.Relation<
-      'api::category-sidebar.category-sidebar',
+      'api::category-page.category-page',
       'oneToOne',
       'admin::user'
     > &
       Attribute.Private;
     localizations: Attribute.Relation<
-      'api::category-sidebar.category-sidebar',
+      'api::category-page.category-page',
       'oneToMany',
-      'api::category-sidebar.category-sidebar'
+      'api::category-page.category-page'
     >;
     locale: Attribute.String;
   };
@@ -1136,7 +1135,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::brand.brand': ApiBrandBrand;
       'api::category.category': ApiCategoryCategory;
-      'api::category-sidebar.category-sidebar': ApiCategorySidebarCategorySidebar;
+      'api::category-page.category-page': ApiCategoryPageCategoryPage;
       'api::footer.footer': ApiFooterFooter;
       'api::home.home': ApiHomeHome;
       'api::product.product': ApiProductProduct;
