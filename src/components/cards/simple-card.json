@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_cards_simple_cards",
+  "info": {
+    "displayName": "Simple Card"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "img": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
+    }
+  }
+}

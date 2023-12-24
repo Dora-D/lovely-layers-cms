@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_labels_label_texts",
+  "info": {
+    "displayName": "Label Text"
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string"
+    },
+    "text": {
+      "type": "string"
+    }
+  }
+}

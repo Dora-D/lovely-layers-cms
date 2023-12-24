@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_filters_sizes",
+  "info": {
+    "displayName": "sizes"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "shoes_sizes": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::shoes-size.shoes-size"
+    }
+  }
+}

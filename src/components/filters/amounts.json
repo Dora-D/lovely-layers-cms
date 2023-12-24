@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_filters_amounts",
+  "info": {
+    "displayName": "amounts"
+  },
+  "options": {},
+  "attributes": {
+    "amount_from": {
+      "type": "biginteger",
+      "required": true
+    },
+    "amount_to": {
+      "type": "biginteger",
+      "required": true
+    }
+  }
+}

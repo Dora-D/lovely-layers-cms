@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_filters_brands",
+  "info": {
+    "displayName": "Brand"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "brands": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::brand.brand"
+    }
+  }
+}

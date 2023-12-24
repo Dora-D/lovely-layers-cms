@@ -1,0 +1,52 @@
+{
+  "kind": "singleType",
+  "collectionName": "category_sidebars",
+  "info": {
+    "singularName": "category-sidebar",
+    "pluralName": "category-sidebars",
+    "displayName": "Category Sidebar"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "amounts": {
+      "displayName": "amounts",
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "filters.amounts"
+    },
+    "brand_filter": {
+      "displayName": "Brand",
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "filters.brand"
+    },
+    "sizes": {
+      "displayName": "sizes",
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "filters.sizes"
+    }
+  }
+}
