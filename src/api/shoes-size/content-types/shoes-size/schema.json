@@ -4,33 +4,18 @@
   "info": {
     "singularName": "shoes-size",
     "pluralName": "shoes-sizes",
-    "displayName": "Shoes-size",
-    "description": ""
+    "displayName": "Shoes Size"
   },
   "options": {
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
-  "pluginOptions": {
-    "i18n": {
-      "localized": true
-    }
-  },
+  "pluginOptions": {},
   "attributes": {
     "size": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
       "type": "integer",
-      "required": true,
-      "unique": true
-    },
-    "products": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::product.product",
-      "mappedBy": "shoes_sizes"
+      "default": 32,
+      "unique": true,
+      "required": true
     }
   }
 }

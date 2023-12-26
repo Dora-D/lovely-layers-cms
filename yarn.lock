@@ -3604,6 +3604,11 @@ csstype@^3.0.2:
   resolved "https://registry.yarnpkg.com/csstype/-/csstype-3.1.3.tgz#d80ff294d114fb0e6ac500fbf85b60137d7eff81"
   integrity sha512-M1uQkMl8rQK/szD0LNhtqxIPLpimGm8sOBwU7lLnCpSbTyY3yeU1Vc7l4KT5zT4s/yOxHH5O7tIuuLOCnLADRw==
 
+custom-slug@^2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/custom-slug/-/custom-slug-2.1.1.tgz#0795efcdfa19a90f9cbd697ebb4bee89b66e6368"
+  integrity sha512-GYrNQKAdvfQQSiH7tuiZJmrHEBvLEro9py10aAlOeEiLgyYFIERa8KFLyxVTC65QUKRCnIr80unc80UZHtldIA==
+
 date-fns@2.30.0:
   version "2.30.0"
   resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-2.30.0.tgz#f367e644839ff57894ec6ac480de40cae4b0f4d0"

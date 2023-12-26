@@ -1,5 +1,17 @@
 import type { Schema, Attribute } from '@strapi/strapi';
 
+export interface ButtonsButton extends Schema.Component {
+  collectionName: 'components_buttons_buttons';
+  info: {
+    displayName: 'Button';
+  };
+  attributes: {
+    label: Attribute.String;
+    styles: Attribute.JSON;
+    disabled: Attribute.Boolean & Attribute.DefaultTo<false>;
+  };
+}
+
 export interface CardsSimpleCard extends Schema.Component {
   collectionName: 'components_cards_simple_cards';
   info: {
@@ -44,11 +56,6 @@ export interface FiltersSizes extends Schema.Component {
   };
   attributes: {
     title: Attribute.String;
-    shoes_sizes: Attribute.Relation<
-      'filters.sizes',
-      'oneToMany',
-      'api::shoes-size.shoes-size'
-    >;
   };
 }
 
@@ -116,6 +123,7 @@ export interface SidebarSidebar extends Schema.Component {
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
+      'buttons.button': ButtonsButton;
       'cards.simple-card': CardsSimpleCard;
       'filters.amounts': FiltersAmounts;
       'filters.brand': FiltersBrand;

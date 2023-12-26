@@ -22,7 +22,17 @@
           "localized": true
         }
       },
-      "type": "string"
+      "type": "string",
+      "required": true
+    },
+    "desc": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "text",
+      "required": true
     },
     "price": {
       "pluginOptions": {
@@ -33,22 +43,10 @@
       "type": "biginteger",
       "required": true
     },
-    "category": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::category.category",
-      "inversedBy": "products"
-    },
-    "shoes_sizes": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::shoes-size.shoes-size",
-      "inversedBy": "products"
-    },
     "images": {
       "type": "media",
       "multiple": true,
-      "required": false,
+      "required": true,
       "allowedTypes": [
         "images"
       ],
@@ -65,15 +63,8 @@
         }
       },
       "type": "biginteger",
-      "required": true
-    },
-    "description": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "type": "text"
+      "required": true,
+      "default": "1"
     },
     "status": {
       "pluginOptions": {
@@ -87,7 +78,8 @@
         "Added",
         "Old"
       ],
-      "default": "New"
+      "default": "New",
+      "required": true
     },
     "has_discount": {
       "pluginOptions": {
@@ -106,6 +98,31 @@
         }
       },
       "type": "biginteger"
+    },
+    "brand": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::brand.brand",
+      "inversedBy": "products"
+    },
+    "category": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::category.category",
+      "inversedBy": "products"
+    },
+    "shoes_sizes": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::shoes-size.shoes-size"
+    },
+    "desc_short": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "text"
     }
   }
 }

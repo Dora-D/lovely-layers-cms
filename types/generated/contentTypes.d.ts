@@ -700,6 +700,11 @@ export interface ApiBrandBrand extends Schema.CollectionType {
           localized: true;
         };
       }>;
+    products: Attribute.Relation<
+      'api::brand.brand',
+      'oneToMany',
+      'api::product.product'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -741,17 +746,23 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
     };
   };
   attributes: {
-    products: Attribute.Relation<
-      'api::category.category',
-      'oneToMany',
-      'api::product.product'
-    >;
-    link: Attribute.Component<'links.nav-link'> &
+    label: Attribute.String &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
+    slug: Attribute.UID<'api::category.category', 'label'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    products: Attribute.Relation<
+      'api::category.category',
+      'oneToMany',
+      'api::product.product'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -804,11 +815,6 @@ export interface ApiCategoryPageCategoryPage extends Schema.SingleType {
           localized: true;
         };
       }>;
-    products: Attribute.Relation<
-      'api::category-page.category-page',
-      'oneToMany',
-      'api::product.product'
-    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -830,6 +836,40 @@ export interface ApiCategoryPageCategoryPage extends Schema.SingleType {
       'api::category-page.category-page'
     >;
     locale: Attribute.String;
+  };
+}
+
+export interface ApiCurrencyCurrency extends Schema.CollectionType {
+  collectionName: 'currencies';
+  info: {
+    singularName: 'currency';
+    pluralName: 'currencies';
+    displayName: 'Currency';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String &
+      Attribute.Required &
+      Attribute.Unique &
+      Attribute.DefaultTo<'\u0433\u0440\u043D'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::currency.currency',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::currency.currency',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
   };
 }
 
@@ -905,6 +945,7 @@ export interface ApiHomeHome extends Schema.SingleType {
     singularName: 'home';
     pluralName: 'homes';
     displayName: 'Home';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -915,16 +956,6 @@ export interface ApiHomeHome extends Schema.SingleType {
     };
   };
   attributes: {
-    products_discount: Attribute.Relation<
-      'api::home.home',
-      'oneToMany',
-      'api::product.product'
-    >;
-    products_new: Attribute.Relation<
-      'api::home.home',
-      'oneToMany',
-      'api::product.product'
-    >;
     congratulation: Attribute.Component<'headers.home-congrat'> &
       Attribute.SetPluginOptions<{
         i18n: {
@@ -938,6 +969,29 @@ export interface ApiHomeHome extends Schema.SingleType {
         };
       }>;
     cards: Attribute.Component<'cards.simple-card', true> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    products_discount: Attribute.Relation<
+      'api::home.home',
+      'oneToMany',
+      'api::product.product'
+    >;
+    product_new: Attribute.Relation<
+      'api::home.home',
+      'oneToMany',
+      'api::product.product'
+    >;
+    product_new_title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    products_discount_button: Attribute.Component<'buttons.button'> &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -977,6 +1031,14 @@ export interface ApiProductProduct extends Schema.CollectionType {
   };
   attributes: {
     name: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    desc: Attribute.Text &
+      Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -989,17 +1051,8 @@ export interface ApiProductProduct extends Schema.CollectionType {
           localized: true;
         };
       }>;
-    category: Attribute.Relation<
-      'api::product.product',
-      'manyToOne',
-      'api::category.category'
-    >;
-    shoes_sizes: Attribute.Relation<
-      'api::product.product',
-      'manyToMany',
-      'api::shoes-size.shoes-size'
-    >;
     images: Attribute.Media &
+      Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -1011,14 +1064,10 @@ export interface ApiProductProduct extends Schema.CollectionType {
         i18n: {
           localized: true;
         };
-      }>;
-    description: Attribute.Text &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
+      }> &
+      Attribute.DefaultTo<'1'>;
     status: Attribute.Enumeration<['New', 'Added', 'Old']> &
+      Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -1034,6 +1083,27 @@ export interface ApiProductProduct extends Schema.CollectionType {
       }> &
       Attribute.DefaultTo<false>;
     discount_price: Attribute.BigInteger &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    brand: Attribute.Relation<
+      'api::product.product',
+      'manyToOne',
+      'api::brand.brand'
+    >;
+    category: Attribute.Relation<
+      'api::product.product',
+      'manyToOne',
+      'api::category.category'
+    >;
+    shoes_sizes: Attribute.Relation<
+      'api::product.product',
+      'oneToMany',
+      'api::shoes-size.shoes-size'
+    >;
+    desc_short: Attribute.Text &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -1068,34 +1138,18 @@ export interface ApiShoesSizeShoesSize extends Schema.CollectionType {
   info: {
     singularName: 'shoes-size';
     pluralName: 'shoes-sizes';
-    displayName: 'Shoes-size';
-    description: '';
+    displayName: 'Shoes Size';
   };
   options: {
-    draftAndPublish: true;
-  };
-  pluginOptions: {
-    i18n: {
-      localized: true;
-    };
+    draftAndPublish: false;
   };
   attributes: {
     size: Attribute.Integer &
       Attribute.Required &
       Attribute.Unique &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    products: Attribute.Relation<
-      'api::shoes-size.shoes-size',
-      'manyToMany',
-      'api::product.product'
-    >;
+      Attribute.DefaultTo<32>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
       'api::shoes-size.shoes-size',
       'oneToOne',
@@ -1108,12 +1162,6 @@ export interface ApiShoesSizeShoesSize extends Schema.CollectionType {
       'admin::user'
     > &
       Attribute.Private;
-    localizations: Attribute.Relation<
-      'api::shoes-size.shoes-size',
-      'oneToMany',
-      'api::shoes-size.shoes-size'
-    >;
-    locale: Attribute.String;
   };
 }
 
@@ -1136,6 +1184,7 @@ declare module '@strapi/types' {
       'api::brand.brand': ApiBrandBrand;
       'api::category.category': ApiCategoryCategory;
       'api::category-page.category-page': ApiCategoryPageCategoryPage;
+      'api::currency.currency': ApiCurrencyCurrency;
       'api::footer.footer': ApiFooterFooter;
       'api::home.home': ApiHomeHome;
       'api::product.product': ApiProductProduct;

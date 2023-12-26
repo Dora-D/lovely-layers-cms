@@ -7,11 +7,6 @@
   "attributes": {
     "title": {
       "type": "string"
-    },
-    "shoes_sizes": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::shoes-size.shoes-size"
     }
   }
 }
