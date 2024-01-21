@@ -72,6 +72,17 @@ export interface HeadersHomeCongrat extends Schema.Component {
   };
 }
 
+export interface LabelsLabelLink extends Schema.Component {
+  collectionName: 'components_labels_label_links';
+  info: {
+    displayName: 'Label Link';
+  };
+  attributes: {
+    title: Attribute.String;
+    link: Attribute.String;
+  };
+}
+
 export interface LabelsLabelText extends Schema.Component {
   collectionName: 'components_labels_label_texts';
   info: {
@@ -129,6 +140,7 @@ declare module '@strapi/types' {
       'filters.brand': FiltersBrand;
       'filters.sizes': FiltersSizes;
       'headers.home-congrat': HeadersHomeCongrat;
+      'labels.label-link': LabelsLabelLink;
       'labels.label-text': LabelsLabelText;
       'links.nav-link': LinksNavLink;
       'links.social-network': LinksSocialNetwork;

@@ -44,6 +44,7 @@
       "type": "string"
     },
     "support_block": {
+      "displayName": "Label Link",
       "type": "component",
       "repeatable": false,
       "pluginOptions": {
@@ -51,7 +52,7 @@
           "localized": true
         }
       },
-      "component": "labels.label-text"
+      "component": "labels.label-link"
     }
   }
 }

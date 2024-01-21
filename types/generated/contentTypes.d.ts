@@ -909,7 +909,7 @@ export interface ApiFooterFooter extends Schema.SingleType {
           localized: true;
         };
       }>;
-    support_block: Attribute.Component<'labels.label-text'> &
+    support_block: Attribute.Component<'labels.label-link'> &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -962,12 +962,6 @@ export interface ApiHomeHome extends Schema.SingleType {
           localized: true;
         };
       }>;
-    desc: Attribute.Text &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
     cards: Attribute.Component<'cards.simple-card', true> &
       Attribute.SetPluginOptions<{
         i18n: {
@@ -997,6 +991,22 @@ export interface ApiHomeHome extends Schema.SingleType {
           localized: true;
         };
       }>;
+    product_new_link: Attribute.Relation<
+      'api::home.home',
+      'oneToOne',
+      'api::category.category'
+    >;
+    product_new_link_text: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    home_descs: Attribute.Relation<
+      'api::home.home',
+      'oneToMany',
+      'api::home-desc.home-desc'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1008,6 +1018,51 @@ export interface ApiHomeHome extends Schema.SingleType {
       'api::home.home',
       'oneToMany',
       'api::home.home'
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface ApiHomeDescHomeDesc extends Schema.CollectionType {
+  collectionName: 'home_descs';
+  info: {
+    singularName: 'home-desc';
+    pluralName: 'home-descs';
+    displayName: 'Home Desc';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    text: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::home-desc.home-desc',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::home-desc.home-desc',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::home-desc.home-desc',
+      'oneToMany',
+      'api::home-desc.home-desc'
     >;
     locale: Attribute.String;
   };
@@ -1109,6 +1164,11 @@ export interface ApiProductProduct extends Schema.CollectionType {
           localized: true;
         };
       }>;
+    currency: Attribute.Relation<
+      'api::product.product',
+      'oneToOne',
+      'api::currency.currency'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1187,6 +1247,7 @@ declare module '@strapi/types' {
       'api::currency.currency': ApiCurrencyCurrency;
       'api::footer.footer': ApiFooterFooter;
       'api::home.home': ApiHomeHome;
+      'api::home-desc.home-desc': ApiHomeDescHomeDesc;
       'api::product.product': ApiProductProduct;
       'api::shoes-size.shoes-size': ApiShoesSizeShoesSize;
     }

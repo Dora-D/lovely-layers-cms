@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_labels_label_links",
+  "info": {
+    "displayName": "Label Link"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "link": {
+      "type": "string"
+    }
+  }
+}

@@ -27,14 +27,6 @@
       },
       "component": "headers.home-congrat"
     },
-    "desc": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "type": "text"
-    },
     "cards": {
       "type": "component",
       "repeatable": true,
@@ -73,6 +65,24 @@
         }
       },
       "component": "buttons.button"
+    },
+    "product_new_link": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::category.category"
+    },
+    "product_new_link_text": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string"
+    },
+    "home_descs": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::home-desc.home-desc"
     }
   }
 }
