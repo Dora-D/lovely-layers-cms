@@ -787,12 +787,12 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
   };
 }
 
-export interface ApiCategoryPageCategoryPage extends Schema.SingleType {
-  collectionName: 'category_pages';
+export interface ApiCategorySidebarCategorySidebar extends Schema.SingleType {
+  collectionName: 'category_sidebars';
   info: {
-    singularName: 'category-page';
-    pluralName: 'category-pages';
-    displayName: 'Category Page';
+    singularName: 'category-sidebar';
+    pluralName: 'category-sidebars';
+    displayName: 'Category Sidebar';
   };
   options: {
     draftAndPublish: true;
@@ -809,31 +809,25 @@ export interface ApiCategoryPageCategoryPage extends Schema.SingleType {
           localized: true;
         };
       }>;
-    title: Attribute.String &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
-      'api::category-page.category-page',
+      'api::category-sidebar.category-sidebar',
       'oneToOne',
       'admin::user'
     > &
       Attribute.Private;
     updatedBy: Attribute.Relation<
-      'api::category-page.category-page',
+      'api::category-sidebar.category-sidebar',
       'oneToOne',
       'admin::user'
     > &
       Attribute.Private;
     localizations: Attribute.Relation<
-      'api::category-page.category-page',
+      'api::category-sidebar.category-sidebar',
       'oneToMany',
-      'api::category-page.category-page'
+      'api::category-sidebar.category-sidebar'
     >;
     locale: Attribute.String;
   };
@@ -1243,7 +1237,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::brand.brand': ApiBrandBrand;
       'api::category.category': ApiCategoryCategory;
-      'api::category-page.category-page': ApiCategoryPageCategoryPage;
+      'api::category-sidebar.category-sidebar': ApiCategorySidebarCategorySidebar;
       'api::currency.currency': ApiCurrencyCurrency;
       'api::footer.footer': ApiFooterFooter;
       'api::home.home': ApiHomeHome;

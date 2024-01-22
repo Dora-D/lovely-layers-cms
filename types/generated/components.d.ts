@@ -27,10 +27,12 @@ export interface FiltersAmounts extends Schema.Component {
   collectionName: 'components_filters_amounts';
   info: {
     displayName: 'amounts';
+    description: '';
   };
   attributes: {
     amount_from: Attribute.BigInteger & Attribute.Required;
     amount_to: Attribute.BigInteger & Attribute.Required;
+    title: Attribute.String;
   };
 }
 
@@ -53,9 +55,15 @@ export interface FiltersSizes extends Schema.Component {
   collectionName: 'components_filters_sizes';
   info: {
     displayName: 'sizes';
+    description: '';
   };
   attributes: {
     title: Attribute.String;
+    sizes: Attribute.Relation<
+      'filters.sizes',
+      'oneToMany',
+      'api::shoes-size.shoes-size'
+    >;
   };
 }
 

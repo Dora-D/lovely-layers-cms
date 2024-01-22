@@ -1,10 +1,10 @@
 {
   "kind": "singleType",
-  "collectionName": "category_pages",
+  "collectionName": "category_sidebars",
   "info": {
-    "singularName": "category-page",
-    "pluralName": "category-pages",
-    "displayName": "Category Page"
+    "singularName": "category-sidebar",
+    "pluralName": "category-sidebars",
+    "displayName": "Category Sidebar"
   },
   "options": {
     "draftAndPublish": true
@@ -24,14 +24,6 @@
         }
       },
       "component": "sidebar.sidebar"
-    },
-    "title": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "type": "string"
     }
   }
 }
