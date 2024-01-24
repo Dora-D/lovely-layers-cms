@@ -793,6 +793,7 @@ export interface ApiCategorySidebarCategorySidebar extends Schema.SingleType {
     singularName: 'category-sidebar';
     pluralName: 'category-sidebars';
     displayName: 'Category Sidebar';
+    description: '';
   };
   options: {
     draftAndPublish: true;

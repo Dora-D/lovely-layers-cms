@@ -1,11 +1,12 @@
 {
   "collectionName": "components_sidebar_sidebars",
   "info": {
-    "displayName": "Sidebar"
+    "displayName": "Sidebar",
+    "description": ""
   },
   "options": {},
   "attributes": {
-    "barands": {
+    "brands": {
       "type": "component",
       "repeatable": false,
       "component": "filters.brand"

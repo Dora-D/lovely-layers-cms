@@ -4,7 +4,8 @@
   "info": {
     "singularName": "category-sidebar",
     "pluralName": "category-sidebars",
-    "displayName": "Category Sidebar"
+    "displayName": "Category Sidebar",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true

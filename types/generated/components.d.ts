@@ -33,6 +33,11 @@ export interface FiltersAmounts extends Schema.Component {
     amount_from: Attribute.BigInteger & Attribute.Required;
     amount_to: Attribute.BigInteger & Attribute.Required;
     title: Attribute.String;
+    currency: Attribute.Relation<
+      'filters.amounts',
+      'oneToOne',
+      'api::currency.currency'
+    >;
   };
 }
 
@@ -131,9 +136,10 @@ export interface SidebarSidebar extends Schema.Component {
   collectionName: 'components_sidebar_sidebars';
   info: {
     displayName: 'Sidebar';
+    description: '';
   };
   attributes: {
-    barands: Attribute.Component<'filters.brand'>;
+    brands: Attribute.Component<'filters.brand'>;
     amounts: Attribute.Component<'filters.amounts'>;
     sizes: Attribute.Component<'filters.sizes'>;
   };
