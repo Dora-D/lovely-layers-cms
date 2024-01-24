@@ -1148,11 +1148,6 @@ export interface ApiProductProduct extends Schema.CollectionType {
       'manyToOne',
       'api::category.category'
     >;
-    shoes_sizes: Attribute.Relation<
-      'api::product.product',
-      'oneToMany',
-      'api::shoes-size.shoes-size'
-    >;
     desc_short: Attribute.Text &
       Attribute.SetPluginOptions<{
         i18n: {
@@ -1163,6 +1158,11 @@ export interface ApiProductProduct extends Schema.CollectionType {
       'api::product.product',
       'oneToOne',
       'api::currency.currency'
+    >;
+    shoes_sizes: Attribute.Relation<
+      'api::product.product',
+      'oneToMany',
+      'api::shoes-size.shoes-size'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -1199,6 +1199,11 @@ export interface ApiShoesSizeShoesSize extends Schema.CollectionType {
     draftAndPublish: false;
   };
   attributes: {
+    label: Attribute.String &
+      Attribute.Required &
+      Attribute.Private &
+      Attribute.Unique &
+      Attribute.DefaultTo<'32'>;
     size: Attribute.Integer &
       Attribute.Required &
       Attribute.Unique &

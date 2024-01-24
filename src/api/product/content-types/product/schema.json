@@ -111,11 +111,6 @@
       "target": "api::category.category",
       "inversedBy": "products"
     },
-    "shoes_sizes": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::shoes-size.shoes-size"
-    },
     "desc_short": {
       "pluginOptions": {
         "i18n": {
@@ -128,6 +123,11 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::currency.currency"
+    },
+    "shoes_sizes": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::shoes-size.shoes-size"
     }
   }
 }
