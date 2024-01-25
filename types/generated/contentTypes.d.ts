@@ -1188,6 +1188,64 @@ export interface ApiProductProduct extends Schema.CollectionType {
   };
 }
 
+export interface ApiProductTitleProductTitle extends Schema.SingleType {
+  collectionName: 'product_titles';
+  info: {
+    singularName: 'product-title';
+    pluralName: 'product-titles';
+    displayName: 'Product Title';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    desc_title: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    size_title: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    buy_button: Attribute.Component<'buttons.button'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::product-title.product-title',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::product-title.product-title',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::product-title.product-title',
+      'oneToMany',
+      'api::product-title.product-title'
+    >;
+    locale: Attribute.String;
+  };
+}
+
 export interface ApiShoesSizeShoesSize extends Schema.CollectionType {
   collectionName: 'shoes_sizes';
   info: {
@@ -1249,6 +1307,7 @@ declare module '@strapi/types' {
       'api::home.home': ApiHomeHome;
       'api::home-desc.home-desc': ApiHomeDescHomeDesc;
       'api::product.product': ApiProductProduct;
+      'api::product-title.product-title': ApiProductTitleProductTitle;
       'api::shoes-size.shoes-size': ApiShoesSizeShoesSize;
     }
   }
